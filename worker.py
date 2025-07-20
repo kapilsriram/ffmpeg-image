@@ -1,12 +1,12 @@
-from rq import Worker, Queue
-from redis import Redis
 import os
+from redis import Redis
+from rq import Worker, Queue
+from tasks import merge_video_image
 
-listen = ['default']
-redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379')
-
+redis_url = os.getenv("REDIS_URL")
 conn = Redis.from_url(redis_url)
+queue = Queue(connection=conn)
 
 if __name__ == '__main__':
-    worker = Worker(queues=[Queue(name, connection=conn) for name in listen])
+    worker = Worker([queue], connection=conn)
     worker.work()
