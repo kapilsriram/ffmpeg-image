@@ -3,4 +3,5 @@ services:
     name: ffmpeg-api
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    startCommand: gunicorn app:app --timeout 120
+
