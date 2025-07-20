@@ -14,7 +14,7 @@ def merge_video_image():
     output = 'output.mp4'
 
     cmd = [
-        'ffmpeg', '-y ', '-i', 'input.mp4', '-i', 'input.png',
+        'ffmpeg', '-y', '-i', 'input.mp4', '-i', 'input.png',
         '-filter_complex', '[0:v][1:v] overlay=10:10',
         '-codec:a', 'copy', output
     ]
