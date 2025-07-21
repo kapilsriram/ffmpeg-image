@@ -1,8 +1,7 @@
 import os
 import requests
 
-def merge_video_image(video_path, image_path):
-    output_path = 'output.mp4'
+def merge_video_image(video_path, image_path, output_path):
 
     cmd = [
         'ffmpeg', '-y', '-i', video_path, '-i', image_path,
